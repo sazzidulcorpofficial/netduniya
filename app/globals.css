@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-blue: #1a365d;
+  --navy-dark: #0b192c;
+  --accent-orange: #ea580c;
+  --bg-page: #f8fafc;
+}
+
+body {
+  color: #0f172a;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+}
+
+/* Custom marquee for Important Ticker */
+@keyframes ticker {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ticker 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Card hover transitions */
+.service-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.08);
+}
+
+/* Print styles for Application Receipts & PVC ID cards */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
+
+/* ==========================================================================
+   ADMIN PANEL HIGH-CONTRAST DARK/BLACK TEXT & RESPONSIVE SCROLLING
+   ========================================================================== */
+
+/* Ensure all admin content defaults to high contrast readable text */
+.admin-content-area {
+  color: #0f172a !important;
+}
+
+.admin-content-area h1,
+.admin-content-area h2,
+.admin-content-area h3,
+.admin-content-area h4,
+.admin-content-area h5,
+.admin-content-area h6 {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+.admin-content-area label {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+.admin-content-area p {
+  color: #1e293b;
+}
+
+/* Enforce crisp black text and white backgrounds for all inputs */
+.admin-content-area input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+.admin-content-area textarea,
+.admin-content-area select {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  border-color: #94a3b8 !important;
+  font-weight: 600 !important;
+}
+
+.admin-content-area input::placeholder,
+.admin-content-area textarea::placeholder {
+  color: #64748b !important;
+  font-weight: 400 !important;
+}
+
+.admin-content-area input:focus,
+.admin-content-area textarea:focus,
+.admin-content-area select:focus {
+  border-color: #1a365d !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(26, 54, 93, 0.25) !important;
+}
+
+/* High contrast bold black text for all admin table headers & cells */
+.admin-content-area table th {
+  color: #000000 !important;
+  font-weight: 900 !important;
+  background-color: #f1f5f9 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.admin-content-area table td {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+.admin-content-area table tr:hover td {
+  background-color: #f8fafc !important;
+}
+
+/* Smooth horizontal scrolling wrapper for tables on mobile/tablet */
+.admin-table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 0.75rem;
+}
+
+.admin-table-container table {
+  min-width: 650px;
+}
